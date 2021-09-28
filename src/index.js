@@ -98,7 +98,7 @@ function convertTemp(event) {
     //console.log("celsius");
     let cels = Number(showTemp.innerHTML.split("°")[0]);
     //console.log(cels);
-    celsToFar = (cels * 9) / 5 + 32;
+    celsToFar = Math.round((cels * 9) / 5 + 32);
     console.log(`${cels}°C is ${celsToFar}°F`);
     conversionButton.innerHTML = "Get temperature in °C";
     showTemp.innerHTML = `${celsToFar}°F`;
@@ -106,7 +106,7 @@ function convertTemp(event) {
     //console.log("farenheit");
     let far = Number(showTemp.innerHTML.split("°")[0]);
     //console.log(far + 1);
-    farToCels = ((far - 32) * 5) / 9;
+    farToCels = Math.round(((far - 32) * 5) / 9);
     console.log(`${far}°F is ${farToCels}°C`);
     conversionButton.innerHTML = "Get temperature in °F";
     showTemp.innerHTML = `${farToCels}°C`;
