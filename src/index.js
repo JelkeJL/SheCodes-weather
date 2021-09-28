@@ -14,7 +14,7 @@ function formatDate() {
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
+    "Saturday",
   ];
   let day = weekdays[today.getDay()];
 
@@ -30,7 +30,7 @@ function formatDate() {
     "September",
     "October",
     "November",
-    "December"
+    "December",
   ];
   let month = months[today.getMonth()];
   //console.log(minutes.toString().length);
@@ -55,6 +55,8 @@ function getTemp(response) {
   let cityTemp = document.querySelector("#temp");
   let temperature = Math.round(response.data.main.temp);
   cityTemp.innerHTML = `${temperature}°C`;
+  let conversionButton = document.querySelector("a#convert");
+  conversionButton.innerHTML = "Get temperature in °F";
 }
 
 //Feature 2
@@ -75,50 +77,41 @@ function submitCity(event) {
 let cityForm = document.querySelector("#city-form");
 cityForm.addEventListener("submit", submitCity);
 
-navigator.geolocation.getCurrentPosition(getPosition);
-
-function getPosition(position) {
-  let latitude = position.coords.latitude;
-  let longitude = position.coords.longitude;
-  let apiKey = "96ad27349a64ea1dcdfbe6f4d458c085";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
-  axios.get(apiUrl).then(showCurrentTemperature);
-}
-
-function showCurrentTemperature(response) {
-  let cityTemp = document.querySelector("#temp");
-  let temperature = Math.round(response.data.main.temp);
-  cityTemp.innerHTML = `${temperature}°C`;
-}
-
-function currentCity(event) {
+function tempNow(event) {
   event.preventDefault();
-  let cityTitle = document.querySelector("h1#current-city");
-  cityTitle.innerHTML = navigator.geolocation.getCurrentPosition(getPosition);
-  let whereIAm = document.querySelector("a#here");
+  let city = "Antwerp";
+  let apiKey = "96ad27349a64ea1dcdfbe6f4d458c085";
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(url).then(getTemp);
 }
 
-let hereClick = document.querySelector("a#here");
-hereClick.addEventListener("click", showCurrentTemperature);
+document.addEventListener("DOMContentLoaded", tempNow);
 
-//!!!! note: i received an email that my api key was blocked because i submitted it too often per minute :/
+//Bonus Feature
+function convertTemp(event) {
+  event.preventDefault();
+  let showTemp = document.querySelector("#temp");
+  let conversionButton = document.querySelector("a#convert");
 
-//navigator.geolocation.getCurrentPosition(getPosition);
+  if (conversionButton.innerHTML.includes("°F")) {
+    //showTemp.innerHTML = "63°F";
+    //console.log("celsius");
+    let cels = Number(showTemp.innerHTML.split("°")[0]);
+    //console.log(cels);
+    celsToFar = (cels * 9) / 5 + 32;
+    console.log(`${cels}°C is ${celsToFar}°F`);
+    conversionButton.innerHTML = "Get temperature in °C";
+    showTemp.innerHTML = `${celsToFar}°F`;
+  } else {
+    //console.log("farenheit");
+    let far = Number(showTemp.innerHTML.split("°")[0]);
+    //console.log(far + 1);
+    farToCels = ((far - 32) * 5) / 9;
+    console.log(`${far}°F is ${farToCels}°C`);
+    conversionButton.innerHTML = "Get temperature in °F";
+    showTemp.innerHTML = `${farToCels}°C`;
+  }
+}
 
-//Bonus Feature >> worked in the previous assignment but currently do not have the time to update it to include the api challenges
-//function convertTemp(event) {
-//event.preventDefault();
-//let showTemp = document.querySelector("#temp");
-//let conversionButton = document.querySelector("a#convert");
-
-//if (conversionButton.innerHTML.includes("°F")) {
-//showTemp.innerHTML = "63°F";
-//conversionButton.innerHTML = "Get temperature in °C";
-//} else {
-//showTemp.innerHTML = "17°C";
-//conversionButton.innerHTML = "Get temperature in °F";
-//}
-//}
-
-//let clickButton = document.querySelector("a#convert");
-//clickButton.addEventListener("click", convertTemp);
+let clickButton = document.querySelector("a#convert");
+clickButton.addEventListener("click", convertTemp);
