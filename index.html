@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weather Forecast</title>
+    <meta charset="UTF-8" />
+    '
+    <link
+      rel="icon"
+      href="https://emojipedia-us.s3.amazonaws.com/thumbs/240/apple/129/girl_emoji-modifier-fitzpatrick-type-4_1f467-1f3fd_1f3fd.png"
+    />
+    '
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link href="src/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script
+    src="https://kit.fontawesome.com/6a32f81739.js"
+    crossorigin="anonymous"
+  ></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row pt-5">
+        <div class="col-4"><h1 id="current-city">Antwerp</h1></div>
+        <div class="col-8"><form id="city-form"><i class="fas fa-search-location magnifying"></i><input type="text" placeholder="Enter a city" id="city-input" autocomplete="off" autofocus></input><input type="submit" value="Submit City">
+      </div>
+
+      <div class="row pt-5">
+      <div class="card col-4">
+          <div class="card-body">
+            <h5 class="card-title" id="temp">17°C </h5>
+            <p class="card-text" id="date-today"></p>
+            <a href="#" class="btn btn-danger" id="convert">Get temperature in °F</a>
+            <img src="images/weather_img.svg" class="card-img-top pt-2 pb-2" alt="temp weather app image">
+            <h5 class="card-title pt-3" id="information">Additional weather information</h5>
+            <p class="card-text">Don't wear a coat, it isn't going to rain and you'll be too hot</p>
+          </div>
+        </div>
+        <div class="forecast_graph col-8">
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Forecast for the next five days</h5>
+                  <p class="card-text">Blabla dynamic content</p>
+                  <img src="images/weather_app.svg" class="card-img-top" alt="temp weather app image">
+                  
+                  <a href="#" class="btn btn-danger mt-3">Refresh</a>
+                </div>
+              </div>
+        </div>
+        <div class="row pt-5">
+        <div class="col-12">
+          <a href="#" class="btn btn-danger" id="here">Current location</a>
+        </div>
+      </div>
+      </div>
+
+      <footer>
+        <p class="github">
+          <a
+            class="github-button"
+            href="https://github.com/jelkejl"
+            aria-label="Follow @jelkejl on GitHub"
+            target="_blank"
+            >@JelkeJL</a
+          >
+        </p>
+      </footer>
+      <script src="src/index.js"></script>
+    </div>
+  </body>
+</html>

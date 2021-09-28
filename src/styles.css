@@ -1,0 +1,27 @@
+footer {
+  width: 99%;
+  margin: 0.5%;
+  margin-bottom: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1%;
+  color: grey;
+  background-color: white;
+  clear: left;
+  text-align: center;
+  font-family: sans-serif;
+  z-index: 999;
+}
+
+.github {
+  float: right;
+  margin-right: 150px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.magnifying {
+  font-size: 25px;
+  padding: 5px;
+}
