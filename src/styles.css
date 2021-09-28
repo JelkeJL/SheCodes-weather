@@ -1,5 +1,4 @@
 footer {
-  position: fixed;
   width: 99%;
   margin: 0.5%;
   margin-bottom: 0;
@@ -20,10 +19,6 @@ footer {
   margin-right: 150px;
   margin-top: 0;
   margin-bottom: 0;
-}
-
-.github-button {
-  float: right;
 }
 
 .magnifying {
