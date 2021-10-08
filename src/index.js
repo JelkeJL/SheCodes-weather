@@ -57,6 +57,23 @@ function getTemp(response) {
   cityTemp.innerHTML = `${temperature}°C`;
   let conversionButton = document.querySelector("a#convert");
   conversionButton.innerHTML = "Get temperature in °F";
+
+  let description = document.querySelector("#description");
+  let humidity = document.querySelector("#humidity");
+  let windSpeed = document.querySelector("#windSpeed");
+  let iconElement = document.querySelector("#icon");
+
+  description.innerHTML = capitalizeFirstLetter(
+    response.data.weather[0].description
+  );
+  console.log(response);
+  humidity.innerHTML = response.data.main.humidity;
+  windSpeed.innerHTML = Math.round(response.data.wind.speed);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 //Feature 2
@@ -82,6 +99,7 @@ function tempNow(event) {
   let city = "Antwerp";
   let apiKey = "96ad27349a64ea1dcdfbe6f4d458c085";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
   axios.get(url).then(getTemp);
 }
 
