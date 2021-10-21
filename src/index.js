@@ -136,7 +136,7 @@ function showForecast(response) {
       pointShape: "sun",
       chartArea: { width: "100%" },
       width: "100%",
-      legend: "none",
+      legend: "top",
     };
 
     var chart = new google.visualization.LineChart(
