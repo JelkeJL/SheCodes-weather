@@ -93,9 +93,9 @@ function showForecast(response) {
                           width="60"
                         />
                         <div class="weather-forecast-temperatures">
-                          <span class="forecast-temp-max font-weight-bold"> ${Math.round(
+                          <span class="forecast-temp-max font-weight-bold"><b> ${Math.round(
                             forecastDay.temp.max
-                          )}° </span>
+                          )}° </b></span>
                           <span class="forecast-temp-min text-muted"> ${Math.round(
                             forecastDay.temp.min
                           )}° </span>
@@ -132,11 +132,12 @@ function showForecast(response) {
       curveType: "function",
       colors: ["#66b3ff", "red"],
       lineWidth: 2,
-      pointSize: 3,
-      pointShape: "sun",
+      pointSize: 8,
+      pointShape: "star",
       chartArea: { width: "100%" },
       width: "100%",
       legend: "top",
+      annotations: { column_id: { style: "line" } },
     };
 
     var chart = new google.visualization.LineChart(
