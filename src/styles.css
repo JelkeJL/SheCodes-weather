@@ -26,3 +26,9 @@ footer {
   font-size: 30px;
   padding: 15px;
 }
+
+#myChart {
+  margin: 0 auto;
+  wdith: 100%;
+  overflow: hidden;
+}

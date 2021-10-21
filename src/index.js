@@ -74,6 +74,10 @@ function showForecast(response) {
 
   let forecastHTML = "<div class='row'>";
 
+  var mins = [];
+  var maxs = [];
+  var days = [];
+
   weekForecast.forEach(function (forecastDay, index) {
     if (index < 7 && index > 0) {
       forecastHTML += `
@@ -101,31 +105,49 @@ function showForecast(response) {
                         </div>
                       </div>        
                     `;
+      mins.push(`${Math.round(forecastDay.temp.min)}`);
+      maxs.push(`${Math.round(forecastDay.temp.max)}`);
+      days.push(`${formatDay(forecastDay.dt)}`);
     }
   });
-
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 
-  google.charts.load("current", { packages: ["corechart"] });
-  google.charts.setOnLoadCallback(drawChart);
+  console.log(mins);
+  console.log(maxs);
+  console.log(days);
 
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
-      ["Year", "Sales", "Expenses"],
-      ["2004", 1000, 400],
-      ["2005", 1170, 460],
-      ["2006", 660, 1120],
-      ["2007", 1030, 540],
+      ["", "min(°C)", "max(°C)"],
+      [days[0], Number(mins[0]), Number(maxs[0])],
+      [days[1], Number(mins[1]), Number(maxs[1])],
+      [days[2], Number(mins[2]), Number(maxs[2])],
+      [days[3], Number(mins[3]), Number(maxs[3])],
+      [days[4], Number(mins[4]), Number(maxs[4])],
+      [days[5], Number(mins[5]), Number(maxs[5])],
     ]);
 
+    var options = {
+      curveType: "function",
+      colors: ["#66b3ff", "red"],
+      lineWidth: 2,
+      pointSize: 3,
+      pointShape: "sun",
+      chartArea: { width: "100%" },
+      width: "100%",
+      legend: "none",
+    };
+
     var chart = new google.visualization.LineChart(
-      document.getElementById("curve_chart")
+      document.getElementById("myChart")
     );
 
-    chart.draw(data);
+    chart.draw(data, options);
   }
-  drawChart();
+
+  google.charts.load("current", { packages: ["corechart"] });
+  google.charts.setOnLoadCallback(drawChart);
 }
 
 //get coordinates
