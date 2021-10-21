@@ -42,6 +42,22 @@ function formatDate() {
 }
 //console.log(formatDate(new Date()));
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  return days[day];
+}
+
 let todaysDate = document.querySelector("#date-today");
 todaysDate.innerHTML = formatDate(new Date());
 
@@ -52,29 +68,40 @@ function capitalizeFirstLetter(string) {
 
 //show week forecast
 function showForecast(response) {
+  let weekForecast = response.data.daily;
   console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = "<div class='row'>";
-  let days = ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
 
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
-                      <div class="col-2">
-                        <div class="forecast-dates">${day}</div>
+  weekForecast.forEach(function (forecastDay, index) {
+    if (index < 7 && index > 0) {
+      forecastHTML += `
+                      <div class="col-2 text-center">
+                        <div class="forecast-dates lead">${formatDay(
+                          forecastDay.dt
+                        )}</div>
                         <img
-                          src="http://openweathermap.org/img/wn/50d@2x.png"
+                          src="http://openweathermap.org/img/wn/${
+                            forecastDay.weather[0].icon
+                          }@2x.png"
                           alt=""
                           width="60"
                         />
                         <div class="weather-forecast-temperatures">
-                          <span class="forecast-temp-max"> 18° </span>
-                          <span class="forecast-temp-min"> 12° </span>
+                          <span class="forecast-temp-max font-weight-bold"> ${Math.round(
+                            forecastDay.temp.max
+                          )}° </span>
+                          <span class="forecast-temp-min text-muted"> ${Math.round(
+                            forecastDay.temp.min
+                          )}° </span>
+                        </div>
+                        <div class="forecast-desc small font-weight-light font-italic">
+                        <i>${forecastDay.weather[0].main}</i>
                         </div>
                       </div>        
                     `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -87,7 +114,7 @@ function getForecast(coordinates) {
   let apiKey = "96ad27349a64ea1dcdfbe6f4d458c085";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
 
-  console.log(apiUrl);
+  //console.log(apiUrl);
   axios.get(apiUrl).then(showForecast);
 }
 
