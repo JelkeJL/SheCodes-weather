@@ -12,6 +12,7 @@ footer {
   text-align: center;
   font-family: sans-serif;
   z-index: 999;
+  position: absolute;
 }
 
 .github {

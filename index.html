@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Weather Forecast</title>
+    <link rel="icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/285/sun_2600-fe0f.png">
+    <title>Jelke's Weather Forecast</title>
     <meta charset="UTF-8" />
     '
     <link
@@ -27,19 +28,19 @@
 
   <body>
     <div class="container">
-      <div class="row pt-5">
+      <div class="row pt-3">
         <div class="col-4"><h1 id="current-city">Antwerp</h1></div>
         <div class="col-8"><form id="city-form"><i class="fas fa-search-location magnifying"></i><input class ="form-control-sm" type="text" placeholder="Enter a city" id="city-input" autocomplete="off" autofocus></input><input type="submit" value="Submit City" class="btn m-3 btn-secondary ">
       </div>
 
-      <div class="row pt-5">
+      <div class="row pt-1">
       <div class="card col-3">
           <div class="card-body">
             <h5 class="card-title" id="temp">17°C </h5>
             <p class="card-text" id="date-today"></p>
             <a href="#" class="btn btn-danger" id="convert">Get temperature in °F</a>
-            <img src="#" id="icon" class="icon-today pt-2 pb-2" alt="temp weather app image" width="90%;">
-            <h5 class="card-title pt-3" id="information">Additional weather information</h5>
+            <img src="#" id="icon" class="icon-today pt-1" alt="temp weather app image" width="65%;">
+            <h5 class="card-title pt-1" id="information">Additional weather information</h5>
             <p class="card-text">            
               <ul>
                 <li><span id="description"></span></li>
@@ -52,21 +53,13 @@
         <div class="forecast_graph col-9">
             <div class="card">
                 <div class="card-body" id="upcoming-week">
-                  <h5 class="card-title pb-4" id="week-forecast">Weather for the upcoming week</h5>
+                  <h5 class="card-title pb-3" id="week-forecast">Weather for the upcoming week</h5>
                   <div class="weather-forecast-week" id="forecast">
-                   <!--<div class="row">
-                      <div class="col-2">
-                        <div class="forecast-dates">Thursday</div>
-                        <img
-                          src="http://openweathermap.org/img/wn/50d@2x.png"
-                          alt=""
-                          width="60"
-                        />
-                        <div class="weather-forecast-temperatures">
-                          <span class="forecast-temp-max"> 18° </span>
-                          <span class="forecast-temp-min"> 12° </span>
-                        </div>
-                      </div>-->
+                      <div class="row">
+                        <div class="col-9 weather-chart">
+                          <div id="chart_div" style="width: 900px; height: 500px"></div>
+                        </div>  
+                      </div>
                     </div> 
                   </div>
                 </div>
@@ -90,5 +83,6 @@
       </div>
     </div>
     <script src="src/index.js"></script>
+
   </body>
 </html>
