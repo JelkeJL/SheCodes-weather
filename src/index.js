@@ -51,7 +51,8 @@ function capitalizeFirstLetter(string) {
 }
 
 //show week forecast
-function showForecast() {
+function showForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = "<div class='row'>";
@@ -80,6 +81,16 @@ function showForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
+//get coordinates
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "96ad27349a64ea1dcdfbe6f4d458c085";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+
+  console.log(apiUrl);
+  axios.get(apiUrl).then(showForecast);
+}
+
 //Fetch temp of location
 function getTemp(response) {
   let cityTemp = document.querySelector("#temp");
@@ -105,7 +116,8 @@ function getTemp(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
-  showForecast();
+  getForecast(response.data.coord);
+  //showForecast();
 }
 
 //Feature 2
