@@ -38,7 +38,7 @@
             <h5 class="card-title" id="temp">17°C </h5>
             <p class="card-text" id="date-today"></p>
             <a href="#" class="btn btn-danger" id="convert">Get temperature in °F</a>
-            <img src="#" id="icon" class="card-img-top pt-2 pb-2" alt="temp weather app image">
+            <img src="#" id="icon" class="icon-today pt-2 pb-2" alt="temp weather app image" width="60%;">
             <h5 class="card-title pt-3" id="information">Additional weather information</h5>
             <p class="card-text">            
               <ul>
@@ -49,36 +49,46 @@
             </p>
           </div>
         </div>
-        <!--
         <div class="forecast_graph col-8">
             <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Forecast for the next five days</h5>
-                  <p class="card-text">Blabla dynamic content</p>
-                  <img src="images/weather_app.svg" class="card-img-top" alt="temp weather app image">
-                  
-                  <a href="#" class="btn btn-danger mt-3">Refresh</a>
+                <div class="card-body" id="upcoming-week">
+                  <h5 class="card-title" id="week-forecast">Weather for the upcoming week</h5>
+                  <div class="weather-forecast-week">
+                    <div class="row">
+                      <div class="col-2">
+                        <div class="forecast-dates">Thursday</div>
+                        <img
+                          src="http://openweathermap.org/img/wn/50d@2x.png"
+                          alt=""
+                          width="60"
+                        />
+                        <div class="weather-forecast-temperatures">
+                          <span class="forecast-temp-max"> 18° </span>
+                          <span class="forecast-temp-min"> 12° </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-        </div>
-      -->
-      </div>
+            </div>
+          </div>
       <div class="row pt-3">
         <div class="col-12">
-      <footer>
-        <p class="github">
-          <a
-            class="github-button"
-            href="https://github.com/JelkeJL/SheCodes-weather"
-            aria-label="Follow @jelkejl on GitHub"
-            target="_blank"
-            >@JelkeJL</a
-          >
-        </p>
-      </footer>
+          <footer>
+            <p class="github">
+              <a
+                class="github-button"
+                href="https://github.com/JelkeJL/SheCodes-weather"
+                aria-label="Follow @jelkejl on GitHub"
+                target="_blank"
+                >@JelkeJL</a
+              >
+            </p>
+          </footer>
+        </div>
       </div>
-      </div>
-      </div>
-      <script src="src/index.js"></script>
+    </div>
+    <script src="src/index.js"></script>
   </body>
 </html>

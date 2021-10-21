@@ -33,3 +33,37 @@ li {
 h1 {
   font-size: 15px;
 }
+
+.icon-today {
+  text-align: center;
+  margin: 0 auto;
+  inline: block;
+}
+
+#icon {
+  margin: 0 auto;
+}
+
+.weather-forecast-week {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.weather-forecast-week.col-2 {
+  text-align: center;
+}
+
+.weather-forecast-temperatures {
+  text-align: center;
+}
+
+.forecast-dates {
+  text-align: center;
+  inline: block;
+}
+
+#upcoming-week {
+  text-align: center;
+  inline: block;
+  margin: 0 auto;
+}
