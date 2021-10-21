@@ -50,6 +50,36 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+//show week forecast
+function showForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = "<div class='row'>";
+  let days = ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+                      <div class="col-2">
+                        <div class="forecast-dates">${day}</div>
+                        <img
+                          src="http://openweathermap.org/img/wn/50d@2x.png"
+                          alt=""
+                          width="60"
+                        />
+                        <div class="weather-forecast-temperatures">
+                          <span class="forecast-temp-max"> 18° </span>
+                          <span class="forecast-temp-min"> 12° </span>
+                        </div>
+                      </div>        
+                    `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 //Fetch temp of location
 function getTemp(response) {
   let cityTemp = document.querySelector("#temp");
@@ -74,6 +104,8 @@ function getTemp(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  showForecast();
 }
 
 //Feature 2
